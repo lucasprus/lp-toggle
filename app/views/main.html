@@ -1,0 +1,11 @@
+<button data-lp-toggle="test1 test2 test3">Toggle all</button>
+<button data-lp-toggle="{{'test2'}}">Toggle second</button>
+<button data-lp-toggle="test3">Toggle third</button><br>
+<button data-lp-toggle="xxx">Toggle non-existing ( there should be no errors )</button><br>
+( opening second forces third to close via 'closeTargets' option )
+
+<div class="green-div" data-lp-toggle-target="{{'test' + '1'}}" data-lp-toggle-target-options="{ onClass: 'open', offClass: 'closed', onStateChange: 'off', state: 'on' }"></div>
+
+<div class="green-div" data-lp-toggle-target="test2" data-lp-toggle-target-options="{ onClass: 'open', offClass: 'closed', onStateChange: 'on', state: 'on', closeTargets: 'test3' }"></div>
+
+<div class="green-div" data-lp-toggle-target="test3" data-lp-toggle-target-options="{ onClass: 'open', offClass: 'closed', onStateChange: 'off', state: 'off' }"></div>
