@@ -2,11 +2,22 @@
 
 /**
  * @ngdoc overview
- * @name lpToggleApp
+ * @name lp-toggle
  * @description
- * # lpToggleApp
+ * # lp-toggle
  *
  * Main module of the application.
  */
-angular
-  .module('lpToggleApp', []);
+angular.module( 'lp-toggle', [ 'ngRoute' ] )
+    .config( /* @ngInject */ function( $routeProvider ) {
+        $routeProvider.
+        when( '/', {
+            templateUrl: 'views/main.html'
+        } ).
+        when( '/another-page', {
+            templateUrl: 'views/another-page.html'
+        } ).
+        otherwise( {
+            redirectTo: '/'
+        } );
+    } );

@@ -2,14 +2,15 @@
 
 /**
  * @ngdoc directive
- * @name lpToggleApp.directive:lpToggleTarget
+ * @name lp-toggle.directive:lpToggleTarget
  * @description
  * # lpToggleTarget
  */
-angular.module('lpToggleApp')
-    .directive('lpToggleTarget', [ 'lpToggleTargets', function( lpToggleTargets ) {
+angular.module( 'lp-toggle' )
+    .directive( 'lpToggleTarget', /* @ngInject */ function( lpToggleTargets ) {
         var lpToggleTargetLink = function( scope, element, attrs ) {
-            var target = lpToggleTargets.add( attrs.lpToggleTarget, { state: scope.options.state, closeTargets: scope.options.closeTargets } );
+            var name = attrs.lpToggleTarget;
+            var target = lpToggleTargets.add( name, { state: scope.options.state, closeTargets: scope.options.closeTargets } );
 
             var onClass = scope.options.onClass;
             var offClass = scope.options.offClass;
@@ -27,11 +28,11 @@ angular.module('lpToggleApp')
             } );
 
             scope.$on( 'targets_change', function() {
-                scope.$digest();
+                scope.$applyAsync();
             } );
 
             scope.$on( '$destroy', function() {
-                lpToggleTargets.remove( attrs.lpToggleTarget );
+                lpToggleTargets.remove( name );
             } );
         };
 
@@ -41,4 +42,4 @@ angular.module('lpToggleApp')
             },
             link: lpToggleTargetLink
         };
-    } ] );
+    } );

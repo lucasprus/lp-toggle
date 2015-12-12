@@ -3,18 +3,20 @@
 
 /**
  * @ngdoc service
- * @name lpToggleApp.lpToggleTargets
+ * @name lp-toggle.lpToggleTargets
  * @description
  * # lpToggleTargets
- * Factory in the lpToggleApp.
+ * Factory in the lp-toggle.
  */
-angular.module( 'lpToggleApp' )
-    .factory( 'lpToggleTargets', [ '$rootScope', function( $rootScope ) {
+angular.module( 'lp-toggle' )
+    .factory( 'lpToggleTargets', /* @ngInject */ function( $rootScope ) {
     var targets = {};
 
     return {
         add: function( name, target ) {
-            if ( targets[ name ] ) { // Don't allow duplicates
+
+            // Don't allow duplicates
+            if ( targets[ name ] ) {
                 throw new Error( 'Target name: \'' + name + '\' already exists' );
             }
 
@@ -72,4 +74,4 @@ angular.module( 'lpToggleApp' )
             $rootScope.$broadcast( 'targets_change' );
         }
     };
-} ] );
+} );
