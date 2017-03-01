@@ -21,3 +21,4 @@ angular.module( 'lp-toggle' )
             restrict: 'A'
         };
     } );
+    

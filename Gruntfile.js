@@ -338,7 +338,7 @@ module.exports = function( grunt ) {
         ngtemplates: {
             dist: {
                 options: {
-                    module: 'lpToggleApp',
+                    module: 'lp-toggle',
                     htmlmin: '<%= htmlmin.dist.options %>',
                     usemin: 'scripts/scripts.js'
                 },
